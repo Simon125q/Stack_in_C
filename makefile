@@ -1,2 +1,19 @@
-TestStack: TestStack.c stack.c
-     gcc -o TestStack TestStack.c stack.c -I.
+# List your *.h files (if you do not have them in your project then leave the variable "headers" empty):
+headers = stack.h
+
+# List your *.c files:
+sources = stack.c TestStack.c
+
+# Specify name of your program:
+executable = TestStack
+
+$(executable): $(headers) $(sources)
+	gcc -fsanitize=undefined -g -Wall -pedantic $(sources) -o $(executable)
+
+.PHONY: clean
+clean:
+	rm $(executable)
+
+.PHONY: check
+check: $(executable)
+	valgrind --leak-check=full --track-origins=yes ./$(executable)
