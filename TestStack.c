@@ -9,7 +9,7 @@ void test3();
 void test4(int num_of_tested_elem);
 
 int main() {
-    Stack test_stack;
+    
     test1(19);
     test2(21);
     test3();
