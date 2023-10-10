@@ -17,6 +17,7 @@ void init(Stack* s) {
 void destroy(Stack* s) {
     if (s->top_index < 0) {
         printf("Stack is already destroyed\n");
+        //free(s->elements);
         abort();
     }
     s->top_index = -1;
@@ -45,6 +46,7 @@ int pop(Stack* s) {
     else {
         printf("Stack is empty\n");
         destroy(s);
+        //free(s->elements);
         abort();
     }
 }
